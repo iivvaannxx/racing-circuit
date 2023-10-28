@@ -12,6 +12,7 @@ import {
 
 /** The graphical user interface options. */
 export const globalGUI = new GUI({ title: 'Opciones' })
+globalGUI.domElement.classList.add('global-gui')
 
 /**
  * Creates a slider control and adds it to the GUI.
