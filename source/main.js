@@ -13,8 +13,18 @@ await scene.initialize()
 
 // Load the circuit model and start the animation loop for the world.
 await world.loadGLTF(CIRCUIT_MODEL)
-document.getElementById('overlay').classList.add('hidden')
 
+// Fade out the loading screen.
+const overlay = document.getElementById('overlay')
+overlay.classList.add('hidden')
+
+// Remove the loading screen from the DOM once the animation ends.
+overlay.addEventListener("animationend", () => {
+
+  overlay.style.display = "none";
+});
+
+// Start the animation loop.
 world.start((time, delta) => {
 
 	scene.update(time, delta)
