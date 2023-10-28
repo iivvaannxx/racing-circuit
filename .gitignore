@@ -1,0 +1,13 @@
+node_modules
+.DS_Store
+dist
+
+# Development dependencies.
+flake.nix
+flake.lock
+.envrc
+
+.direnv
+.vscode
+*.blend
+*.blend1
