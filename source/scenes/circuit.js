@@ -9,7 +9,6 @@ import { button, checkbox, dropdown, folder } from '../lib/gui'
 import { 
   
   CAR_1_DATA, CAR_2_DATA, 
-  DEFAULT_CAR_SPEED, 
   FOLLOW_CAMERA_OFFSET, 
   GROUND_TEXTURE, 
 
@@ -40,6 +39,7 @@ export class CircuitScene extends Three.Scene {
     this.guiFolder = folder('Scene')
     this.target = null
 
+    this.racing = false
     this.helpers = [
 
       new Three.AxesHelper(Number.MAX_SAFE_INTEGER),
@@ -140,15 +140,16 @@ export class CircuitScene extends Three.Scene {
   /** Creates the UI for the scene. */
   createUI () {
 
+    const carNames = [this.car1.name, this.car2.name]
     const carMap = {
 
-      "Free": null,
-      "Car 1": this.car1.model,
-      "Car 2": this.car2.model
+      "Libre": null,
+      [this.car1.name]: this.car1.model,
+      [this.car2.name]: this.car2.model
     }
 
     checkbox('Depurar', false, (value) => this.toggleHelpers(value), this.guiFolder)
-    dropdown('Camera', ["Free", "Car 1", "Car 2"], "Free", (value) => {
+    dropdown('Camera', ["Libre", ...carNames], "Libre", (value) => {
 
       const camera = World.instance.mainCamera
       const newTarget = carMap[value]
@@ -171,12 +172,7 @@ export class CircuitScene extends Three.Scene {
 
     }, this.guiFolder)
 
-    button('Race!', () => {
-
-      this.prepareCarForRace(this.car1)
-      this.prepareCarForRace(this.car2)
-
-    }, this.guiFolder)
+    this.raceButton = button('Carrera!', () => this.prepareRace(), this.guiFolder)
   }
 
   /**
@@ -193,39 +189,36 @@ export class CircuitScene extends Three.Scene {
     this.car2.toggleHelper(enable)
   }
 
+  /** Prepares a race between the cars of the scene. */
+  prepareRace() {
 
-  /**
-   * Prepares a car for the race by setting its initial position and speed.
-   * @param {Car} car - The car to prepare for the race.
-  */
+    if (!(this.racing)) {
 
-  prepareCarForRace(car) {
+      this.racing = true
 
-    car.moveTo(0)
-    car.onLapCompleted = () => {
+      this.raceButton.disable()
+      this.raceButton.$button.innerText = "Carrera en Curso"
+      this.raceButton.$button.style.backgroundColor = 'rgba(255, 0, 0, 0.4)'
 
-      alert(`El ganador es el ${car.name}!`)
+      const onRaceFinished = (winnerName) => {
 
-      // Reset both cars.
-      this.resetCar(this.car1)
-      this.resetCar(this.car2)
+        this.racing = false
+
+        this.raceButton.enable()
+        this.raceButton.$button.innerText = "Carrera!"
+        this.raceButton.$button.style.backgroundColor = ''
+
+        // Announce the winner.
+        this.sky.animateCycle.setValue(false)
+        alert(`El ganador es el ${winnerName}!`)     
+        this.sky.animateCycle.setValue(true)
+
+        this.car1.reset()
+        this.car2.reset()
+      }
+
+      this.car1.prepareRace(onRaceFinished)
+      this.car2.prepareRace(onRaceFinished)
     }
-
-    // Assign a random speed.
-    car.speed = Three.MathUtils.randInt(45, 75)
-    car.shouldMoveAlone = true
-  }
-
-  /**
-   * Resets the given car to its default state.
-   * @param {Car} car - The car to reset.
-  */
- 
-  resetCar(car) {
-
-    car.moveTo(0)
-    car.onLapCompleted = null
-    car.speed = DEFAULT_CAR_SPEED
-    car.shouldMoveAlone = false
   }
 }

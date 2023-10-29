@@ -99,9 +99,8 @@ export class Car {
 
     const carColor = this.material.color.getHexString()
 
-    checkbox('Mover', this.shouldMoveAlone, (value) => { this.shouldMoveAlone = value }, this.guiFolder)
-    color('Color', carColor, (value) => { this.material.color.set(value) }, this.guiFolder)
-    
+    this.moveCheckbox = checkbox('Mover', this.shouldMoveAlone, (value) => { this.shouldMoveAlone = value }, this.guiFolder)
+    this.colorSelector = color('Color', carColor, (value) => { this.material.color.set(value) }, this.guiFolder)
     this.positionSlider = slider('Posición', this.position, [0, 1, 0.001], (value) => {
 
       this.position = value
@@ -118,5 +117,34 @@ export class Car {
 
     const action = enable ? this.model.add : this.model.remove
     action.call(this.model, this.helper)
+  }
+
+  /**
+   * Prepares the car for a race.
+   * @param {(winner: string) => void} onRaceFinished - The function to be called when the race is finished.
+  */
+
+  prepareRace (onRaceFinished) {
+
+    this.moveTo(0)
+    this.onLapCompleted = () => onRaceFinished(this.name)
+
+    this.speed = Three.MathUtils.randInt(45, 75)
+    this.moveCheckbox.setValue(true)
+    this.moveCheckbox.disable()
+    this.positionSlider.disable()
+  }
+
+  /** Resets the car to its initial state. */
+  reset () {
+
+    this.moveTo(0)
+
+    this.moveCheckbox.setValue(false)
+    this.moveCheckbox.enable()
+    this.positionSlider.enable()
+
+    this.onLapCompleted = null
+    this.speed = DEFAULT_CAR_SPEED
   }
 }
