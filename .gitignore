@@ -9,5 +9,4 @@ flake.lock
 
 .direnv
 .vscode
-*.blend
-*.blend1
+blender/
