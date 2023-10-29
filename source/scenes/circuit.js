@@ -103,7 +103,7 @@ export class CircuitScene extends Three.Scene {
     this.ground.material.side = Three.DoubleSide
   
     // Slightly offset it and rotate it so it's horizontal.
-    this.ground.position.y = -0.025
+    this.ground.position.y = -0.01
     this.ground.rotation.x = -Math.PI / 2
   
     // Enable shadows for the ground.

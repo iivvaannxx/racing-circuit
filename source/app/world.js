@@ -47,7 +47,7 @@ export class World {
   /** Initializes the renderer used to render the world. */
   initializeRenderer() {
 
-    this.renderer = new Three.WebGLRenderer({ antialias: true })
+    this.renderer = new Three.WebGLRenderer({ antialias: true, logarithmicDepthBuffer: true })
     document.body.appendChild(this.renderer.domElement)
 
     // Set it full-screen.
