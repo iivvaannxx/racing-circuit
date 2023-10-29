@@ -71,12 +71,12 @@ export class AnimatedSky extends Sky {
     this.sunLight.castShadow = true
 
     // Configure shadow camera frustum
-    this.sunLight.shadow.camera.left = -300
-    this.sunLight.shadow.camera.right = 300
-    this.sunLight.shadow.camera.top = 300
-    this.sunLight.shadow.camera.bottom = -300
+    this.sunLight.shadow.camera.left = -400
+    this.sunLight.shadow.camera.right = 400
+    this.sunLight.shadow.camera.top = 400
+    this.sunLight.shadow.camera.bottom = -400
     this.sunLight.shadow.camera.near = 0.5
-    this.sunLight.shadow.camera.far = 750
+    this.sunLight.shadow.camera.far = 800
 
     // Increase shadow map resolution
     this.sunLight.shadow.mapSize.width = 8192
@@ -147,7 +147,7 @@ export class AnimatedSky extends Sky {
     const theta = Three.MathUtils.degToRad(this.sunRotation)
     
     this.sunPosition.setFromSphericalCoords(1, phi, theta)
-    this.sunLight.position.copy(this.sunPosition.multiplyScalar(350))
+    this.sunLight.position.copy(this.sunPosition.multiplyScalar(400))
     this.material.uniforms.sunPosition.value.copy(this.sunPosition)
   }
 }
