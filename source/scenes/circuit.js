@@ -138,7 +138,7 @@ export class CircuitScene extends Three.Scene {
   createUI() {
     const carNames = [this.car1.name, this.car2.name];
     const carMap = {
-      Libre: null,
+      Free: null,
       [this.car1.name]: this.car1.model,
       [this.car2.name]: this.car2.model,
     };
@@ -151,8 +151,8 @@ export class CircuitScene extends Three.Scene {
     );
     dropdown(
       "Camera",
-      ["Libre", ...carNames],
-      "Libre",
+      ["Free", ...carNames],
+      "Free",
       (value) => {
         const camera = World.instance.mainCamera;
         const newTarget = carMap[value];

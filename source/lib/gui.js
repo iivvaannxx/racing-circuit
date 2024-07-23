@@ -8,7 +8,7 @@ import {
 } from "lil-gui";
 
 /** The graphical user interface options. */
-export const globalGUI = new GUI({ title: "Opciones" });
+export const globalGUI = new GUI({ title: "Options" });
 globalGUI.domElement.classList.add("global-gui");
 
 /**

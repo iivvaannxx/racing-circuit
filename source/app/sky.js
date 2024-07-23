@@ -60,7 +60,7 @@ export class AnimatedSky extends Sky {
     this.initializeSun();
 
     // Create the tweens and the UI folder.
-    this.guiFolder = folder("Cielo");
+    this.guiFolder = folder("Sky");
     this.elevationTween = new Tween({ value: initialElevation });
     this.rotationTween = new Tween({ value: initialRotation });
 
@@ -92,7 +92,7 @@ export class AnimatedSky extends Sky {
   createUI() {
     // Controls whether the sun should be animated or not.
     this.animateCycle = checkbox(
-      "Animar Ciclo",
+      "Animate Cycle",
       true,
       (shouldAnimate) => {
         if (shouldAnimate) {
@@ -108,7 +108,7 @@ export class AnimatedSky extends Sky {
 
     // Controls the elevation of the sun.
     this.sunElevationSlider = slider(
-      "Elevación del Sol",
+      "Sun Elevation",
       this.sunElevation,
       [10, 60, 1],
       (value) => {
@@ -120,7 +120,7 @@ export class AnimatedSky extends Sky {
 
     // Controls the rotation of the sun.
     this.sunRotationSlider = slider(
-      "Rotación del Sol",
+      "Sun Rotation",
       this.sunRotation,
       [-180, 180, 1],
       (value) => {
