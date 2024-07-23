@@ -90,7 +90,7 @@ export class Car {
     const carColor = this.material.color.getHexString();
 
     this.moveCheckbox = checkbox(
-      "Mover",
+      "Move",
       this.shouldMoveAlone,
       (value) => {
         this.shouldMoveAlone = value;
@@ -106,7 +106,7 @@ export class Car {
       this.guiFolder,
     );
     this.positionSlider = slider(
-      "Posición",
+      "Position",
       this.position,
       [0, 1, 0.001],
       (value) => {

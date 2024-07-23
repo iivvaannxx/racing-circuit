@@ -7,7 +7,7 @@ export const ORIGIN = new Three.Vector3(0, 0, 0);
 export const BLENDER_SCALE = 10;
 
 /** The path to the circuit model. */
-export const CIRCUIT_MODEL = "/models/Circuit.glb";
+export const CIRCUIT_MODEL = "/models/circuit.glb";
 
 /** The path to the ground texture. */
 export const GROUND_TEXTURE = "/textures/ground.png";
@@ -17,15 +17,15 @@ export const DEFAULT_CAR_SPEED = 50;
 
 /** The data for the 'Car 1' model. */
 export const CAR_1_DATA = {
-  name: "Coche 1",
-  filePath: "/models/Car 1.glb",
+  name: "Car 1",
+  filePath: "/models/car-1.glb",
   materialName: "yellow",
 };
 
 /** The data for the 'Car 2' model. */
 export const CAR_2_DATA = {
-  name: "Coche 2",
-  filePath: "/models/Car 2.glb",
+  name: "Car 2",
+  filePath: "/models/car-2.glb",
   materialName: "red.054",
 };
 

@@ -144,7 +144,7 @@ export class CircuitScene extends Three.Scene {
     };
 
     checkbox(
-      "Depurar",
+      "Debug",
       false,
       (value) => this.toggleHelpers(value),
       this.guiFolder,
@@ -174,11 +174,7 @@ export class CircuitScene extends Three.Scene {
       this.guiFolder,
     );
 
-    this.raceButton = button(
-      "Carrera!",
-      () => this.prepareRace(),
-      this.guiFolder,
-    );
+    this.raceButton = button("Race!", () => this.prepareRace(), this.guiFolder);
   }
 
   /**
@@ -200,19 +196,19 @@ export class CircuitScene extends Three.Scene {
       this.racing = true;
 
       this.raceButton.disable();
-      this.raceButton.$button.innerText = "Carrera en Curso";
+      this.raceButton.$button.innerText = "Currently racing...";
       this.raceButton.$button.style.backgroundColor = "rgba(255, 0, 0, 0.4)";
 
       const onRaceFinished = (winnerName) => {
         this.racing = false;
 
         this.raceButton.enable();
-        this.raceButton.$button.innerText = "Carrera!";
+        this.raceButton.$button.innerText = "Race!";
         this.raceButton.$button.style.backgroundColor = "";
 
         // Announce the winner.
         this.sky.animateCycle.setValue(false);
-        alert(`El ganador es el ${winnerName}!`);
+        alert(`The winner is ${winnerName}!`);
         this.sky.animateCycle.setValue(true);
 
         this.car1.reset();
