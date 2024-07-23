@@ -32,7 +32,7 @@ export class CircuitScene extends Three.Scene {
     this.car1 = new Car(CAR_1_DATA, this.path1);
     this.car2 = new Car(CAR_2_DATA, this.path2);
 
-    this.guiFolder = folder("Escena");
+    this.guiFolder = folder("Scene");
     this.target = null;
 
     this.racing = false;
