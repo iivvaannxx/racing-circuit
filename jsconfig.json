@@ -1,14 +1,12 @@
 {
   "compilerOptions": {
-    
     "target": "es6",
     "module": "es6",
     "moduleResolution": "node"
   },
 
-  "include": [ "source/**/*" ],
+  "include": ["source/**/*"],
   "typeAcquisition": {
-
-    "include": [ "three" ]
+    "include": ["three"]
   }
 }
