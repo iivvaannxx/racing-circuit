@@ -70,6 +70,6 @@ There is an option for each car (there are 2), but they are the same. Each car h
 > [!NOTE]
 > Because of how the paths are defined (not even close to being realistic), the one that goes through the inside of the circuit is a bit shorter than the one that goes through the outside. This means that the car that goes through the inside will have a slight advantage.
 
-## Credits
+## 🎖️ Credits
 
 A lot of thanks to [Kenney](https://kenney.nl) for the [Racing Kit](https://kenney.nl/assets/racing-kit) that I used to make this project. It's a great asset pack with a lot of cool stuff. The circuit is based on the one that can be found in the screenshots of the asset pack, but with some modifications.
