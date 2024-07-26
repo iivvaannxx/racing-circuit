@@ -46,7 +46,9 @@ export class World {
       antialias: true,
       logarithmicDepthBuffer: true,
     });
-    document.body.appendChild(this.renderer.domElement);
+
+    const app = document.querySelector("#app");
+    app.appendChild(this.renderer.domElement);
 
     // Set it full-screen.
     this.renderer.setSize(window.innerWidth, window.innerHeight);
