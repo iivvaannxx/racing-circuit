@@ -5,7 +5,7 @@
 
 <div align="center">
  <a href="https://racing-circuit.pages.dev">
-    <img src="./public/og.png" alt="Preview image of the project" />
+    <img src="./.github/assets/preview.png" alt="Preview image of the project" />
   </a>
 </div>
 
